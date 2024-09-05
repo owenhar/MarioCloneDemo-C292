@@ -11,6 +11,7 @@ public class PlatformController : MonoBehaviour
     private Vector3 startingPosition;
     private bool up = true;
 
+
     // Start is called before the first frame update
     void Start()
     {

@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
         //transform.rotation.z = 0;
-        transform.rotation = new Quaternion(0, 0, 0, 0);
         //if (moveInput > 0) // right
         //{
         //    Debug.Log("move right");
