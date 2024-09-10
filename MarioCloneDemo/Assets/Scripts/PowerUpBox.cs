@@ -7,7 +7,8 @@ public class PowerUpBox : MonoBehaviour
 
     [SerializeField] float jumpHeight;
     [SerializeField] float rotateSpeed;
-
+    [SerializeField] GameObject toSpawn;
+    
 
 
     bool isRotating = false;
@@ -33,8 +34,10 @@ public class PowerUpBox : MonoBehaviour
             transform.position += new Vector3(0, jumpHeight, 0);
             isRotating = true;
             transform.localScale = new Vector3(2, 2, 2);
-
-
+            if (toSpawn != null)
+            {
+                Instantiate(toSpawn, Vector3.zero, Quaternion.identity);
+            }
         }
     }
 }

@@ -25,14 +25,10 @@ public class DynamicEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (direction == Vector2.left)
+        if (collision.gameObject.tag == "TurnCollider")
         {
-            direction = Vector2.right;
-            sr.flipX = true;
-        } else
-        {
-            direction = Vector2.left;
-            sr.flipX = false;
+            direction = -direction;
+            sr.flipX = !sr.flipX;
         }
     }
 }
