@@ -23,6 +23,7 @@ public class CollectableController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             UiManager.Instance.IncreaseScore(pointValue);
+            UiManager.Instance.KillCoin();
             Destroy(gameObject);
         }
     }

@@ -30,5 +30,24 @@ public class DynamicEnemy : MonoBehaviour
             direction = -direction;
             sr.flipX = !sr.flipX;
         }
+
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player.IsJumping())
+            {
+                UiManager.Instance.killEnemy();
+                Destroy(gameObject);
+            }
+            else
+            {
+                UiManager.Instance.decreaseHP(1);
+            }
+        }
     }
 }

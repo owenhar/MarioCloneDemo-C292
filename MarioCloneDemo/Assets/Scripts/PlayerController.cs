@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
+    [SerializeField] int jumpLimit = 1;
 
     private Rigidbody2D rb;
+
+    private int jumpCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +47,20 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if (jumpCounter < jumpLimit)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpCounter++;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        jumpCounter = 0;
+    }
+
+    public bool IsJumping()
+    {
+        return jumpCounter > 0;
     }
 }
